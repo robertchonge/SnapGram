@@ -1,0 +1,26 @@
+<h1 class="text-2xl font-bold mb-4">Photo Feed</h1>
+<% if user_signed_in? %>
+  <%= link_to 'New Post', new_post_path, class: "bg-green-500 text-white px-4 py-2 rounded" %>
+<% end %>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-6">
+  <% @posts.each do |post| %>
+    <div class="border rounded-lg overflow-hidden">
+      <%= image_tag post.image, class: "w-full #{post.filter}" %>
+      <div class="p-4">
+        <p class="font-semibold"><%= post.user.display_name %></p>
+        <p><%= post.caption %></p>
+        <div class="mt-2">
+          <% if user_signed_in? %>
+            <% if post.likes.exists?(user: current_user) %>
+              <%= button_to 'Unlike', post_like_path(post, post.likes.find_by(user: current_user)), method: :delete, class: "text-red-500" %>
+            <% else %>
+              <%= button_to 'Like', post_likes_path(post), method: :post, class: "text-blue-500" %>
+            <% end %>
+          <% end %>
+          <span><%= pluralize(post.likes.count, 'like') %></span>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
