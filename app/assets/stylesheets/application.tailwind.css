@@ -1,0 +1,9 @@
+application.tailwind.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Filters */
+.grayscale { filter: grayscale(100%); }
+.sepia { filter: sepia(100%); }
+.blur { filter: blur(4px); }
