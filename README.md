@@ -36,7 +36,7 @@ StimulusJS	Filter Preview Controller
 
 
 
-git clone https://github.com/yourusername/snapgram.git
+git clone https://github.com/robertchonge/snapgram.git
 cd snapgram
 
 2. Install dependencies
